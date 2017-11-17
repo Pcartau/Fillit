@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rightshift.c                                    :+:      :+:    :+:   */
+/*   ft_emptymap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/16 13:43:23 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/17 12:24:53 by pcartau          ###   ########.fr       */
+/*   Created: 2017/11/15 19:18:02 by pcartau           #+#    #+#             */
+/*   Updated: 2017/11/17 09:06:29 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-char *ft_rightshift(char *map, char *str, char c)
+char *ft_emptymap(int i, int j)
 {
-	int i;
+	char *map;
+	int k;
 	int l;
 
-	l = ft_strlen(map);
-	i = l - 1;
-	while (map[i])
+	l = i;
+	i = (i * j) + (j + 1);
+	map = (char *)malloc(sizeof(char) * i + 1);
+	j = 0;
+	k = 0;
+	while (j < i - 1)
 	{
-		if (str[i] == c && map[i + 1] == '.')
+		k++;
+		if (k == l + 1)
 		{
-			str[i + 1] = c;
-			str[i] = '.';
-			map[i + 1] = c;
-			if (map[i] == c)
-				map[i] = '.';
+			map[j] = '\n';
+			k = 0;
 		}
-		else if (str[i] == c && map[i + 1] != '.')
-			return (NULL);
-		i--;
+		else
+			map[j] = '.';
+		j++;
 	}
+	map[j] = '\n';
+	map[j + 1] = '\0';
 	return (map);
 }

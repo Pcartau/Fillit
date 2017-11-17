@@ -6,11 +6,11 @@
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 13:43:52 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/16 14:29:52 by pcartau          ###   ########.fr       */
+/*   Updated: 2017/11/17 12:24:50 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "lib.h"
 
 char *ft_leftshift(char *map, char *str, char c, int j)
 {
@@ -28,9 +28,11 @@ char *ft_leftshift(char *map, char *str, char c, int j)
 				str[i - 1] = c;
 				str[i] = '.';
 				map[i - 1] = c;
-				map[i] = '.';
+				if (map[i] == c)
+					map[i] = '.';
 			}
-			else if (str[i] == c && map[i - 1] != '.')
+			else if (str[i] == c && map[i - 1] > 127 && map[i - (j + 1)] \
+					< 0)
 				return (NULL);
 			i++;
 		}

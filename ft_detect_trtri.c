@@ -6,11 +6,11 @@
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 13:24:42 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/15 18:10:04 by pcartau          ###   ########.fr       */
+/*   Updated: 2017/11/17 08:58:29 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "lib.h"
 
 char			*ft_detect_trtri(char *src, char c)
 {

@@ -6,39 +6,33 @@
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 13:42:39 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/16 14:29:24 by pcartau          ###   ########.fr       */
+/*   Updated: 2017/11/17 12:24:42 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-size_t ft_strlen(char *str);
+#include "lib.h"
 
 char *ft_bottomshift(char *map, char *str, char c, int j)
 {
-	int k;
 	int i;
 	int l;
 
 	l = ft_strlen(str);
-	k = 0;
-	while (k < j)
+	i = l - 1;
+	while (map[i])
 	{
-		i = l - 1;
-		while (map[i])
+		if (str[i] == c && map[i + (j + 1)] == '.')
 		{
-			if (str[i] == c && map[i + (j + 1)] == '.')
-			{
-				str[i + (j + 1)] = c;
-				str[i] = '.';
-				map[i + (j + 1)] = c;
+			str[i + (j + 1)] = c;
+			str[i] = '.';
+			map[i + (j + 1)] = c;
+			if (map[i] == c)
 				map[i] = '.';
-			}
-			else if (str[i] == c && map[i + (j + 1)] != '.')
-				return (NULL);
-			i--;
 		}
-		k++;
+		else if (str[i] == c && map[i + (j + 1)] > 127 && map[i - (j + 1)] \
+				< 0)
+			return (NULL);
+		i--;
 	}
 	return (map);
 }

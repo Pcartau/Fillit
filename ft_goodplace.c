@@ -6,11 +6,13 @@
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 13:41:45 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/16 13:42:05 by pcartau          ###   ########.fr       */
+/*   Updated: 2017/11/17 09:05:44 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_goodplace(char *map, char *str, char c, int j)
+#include "lib.h"
+
+char *ft_goodplace(char *map, char *str, char c)
 {
 	int i;
 

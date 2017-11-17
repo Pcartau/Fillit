@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rightshift.c                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/16 13:43:23 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/17 12:24:53 by pcartau          ###   ########.fr       */
+/*   Created: 2017/11/07 11:36:27 by pcartau           #+#    #+#             */
+/*   Updated: 2017/11/17 08:59:19 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-char *ft_rightshift(char *map, char *str, char c)
+char	*ft_strdup(const char *src)
 {
-	int i;
-	int l;
+	char	*dest;
+	int		i;
 
-	l = ft_strlen(map);
-	i = l - 1;
-	while (map[i])
+	i = 0;
+	while (src[i])
+		i++;
+	if ((dest = malloc(sizeof(char) * i + 1)) == NULL)
+		return (0);
+	else
 	{
-		if (str[i] == c && map[i + 1] == '.')
+		i = 0;
+		while (src[i])
 		{
-			str[i + 1] = c;
-			str[i] = '.';
-			map[i + 1] = c;
-			if (map[i] == c)
-				map[i] = '.';
+			dest[i] = src[i];
+			i++;
 		}
-		else if (str[i] == c && map[i + 1] != '.')
-			return (NULL);
-		i--;
+		dest[i] = '\0';
 	}
-	return (map);
+	return (dest);
 }

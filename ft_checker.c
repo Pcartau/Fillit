@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rightshift.c                                    :+:      :+:    :+:   */
+/*   ft_checker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/16 13:43:23 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/17 12:24:53 by pcartau          ###   ########.fr       */
+/*   Created: 2017/11/17 11:17:17 by pcartau           #+#    #+#             */
+/*   Updated: 2017/11/17 11:25:39 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-char *ft_rightshift(char *map, char *str, char c)
+int		ft_checker(char *map, char c, int i)
 {
-	int i;
-	int l;
+	int j;
 
-	l = ft_strlen(map);
-	i = l - 1;
-	while (map[i])
-	{
-		if (str[i] == c && map[i + 1] == '.')
-		{
-			str[i + 1] = c;
-			str[i] = '.';
-			map[i + 1] = c;
-			if (map[i] == c)
-				map[i] = '.';
-		}
-		else if (str[i] == c && map[i + 1] != '.')
-			return (NULL);
-		i--;
-	}
-	return (map);
+	j = i;
+	if (ft_checkpoint(map) != (i * j) - ((c - 64) * 4))
+		return (0);
+	return (1);
 }

@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rightshift.c                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/16 13:43:23 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/17 12:24:53 by pcartau          ###   ########.fr       */
+/*   Created: 2017/11/06 16:17:16 by pcartau           #+#    #+#             */
+/*   Updated: 2017/11/17 09:04:53 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-char *ft_rightshift(char *map, char *str, char c)
+size_t		ft_strlen(const char *str)
 {
 	int i;
-	int l;
 
-	l = ft_strlen(map);
-	i = l - 1;
-	while (map[i])
-	{
-		if (str[i] == c && map[i + 1] == '.')
-		{
-			str[i + 1] = c;
-			str[i] = '.';
-			map[i + 1] = c;
-			if (map[i] == c)
-				map[i] = '.';
-		}
-		else if (str[i] == c && map[i + 1] != '.')
-			return (NULL);
-		i--;
-	}
-	return (map);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
