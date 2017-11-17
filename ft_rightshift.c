@@ -6,7 +6,7 @@
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 13:43:23 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/17 12:24:53 by pcartau          ###   ########.fr       */
+/*   Updated: 2017/11/17 12:36:43 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ char *ft_rightshift(char *map, char *str, char c)
 			if (map[i] == c)
 				map[i] = '.';
 		}
-		else if (str[i] == c && map[i + 1] != '.')
+		else if (str[i] == c && map[i + 1] > 127 && map[i +1] \
+				< 0)
 			return (NULL);
 		i--;
 	}
