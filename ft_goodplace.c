@@ -6,7 +6,7 @@
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 13:41:45 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/17 09:05:44 by pcartau          ###   ########.fr       */
+/*   Updated: 2017/11/18 15:07:07 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ char *ft_goodplace(char *map, char *str, char c)
 	while (map[i])
 	{
 		if (str[i] == c)
-		{
-			str[i] = '.';
 			map[i] = c;
-		}
 		i++;
 	}
 	return (map);

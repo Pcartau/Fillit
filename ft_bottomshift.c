@@ -6,13 +6,13 @@
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 13:42:39 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/17 12:24:42 by pcartau          ###   ########.fr       */
+/*   Updated: 2017/11/18 12:00:52 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-char *ft_bottomshift(char *map, char *str, char c, int j)
+char	*ft_bottomshift(char *map, char *str, char c, int j)
 {
 	int i;
 	int l;
@@ -29,8 +29,8 @@ char *ft_bottomshift(char *map, char *str, char c, int j)
 			if (map[i] == c)
 				map[i] = '.';
 		}
-		else if (str[i] == c && map[i + (j + 1)] > 127 && map[i - (j + 1)] \
-				< 0)
+		else if (str[i] == c && (map[i + (j + 1)] > 127 || \
+					map[i - (j + 1)] < 0))
 			return (NULL);
 		i--;
 	}
