@@ -6,19 +6,31 @@
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 13:44:15 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/18 11:51:43 by pcartau          ###   ########.fr       */
+/*   Updated: 2017/11/18 16:20:14 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-char *ft_topshift(char *map, char *str, char c, int j)
+static int	condition_top(char *map, char c, int j)
 {
-	int k;
 	int i;
 
-	k = 0;
-	while (k < j)
+	i = 0;
+	while (i < j)
+	{
+		if (map[i] == c)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+char	*ft_topshift(char *map, char *str, char c, int j)
+{
+	int i;
+
+	while (condition_top(map, c, j))
 	{
 		i = 0;
 		while (map[i])
@@ -36,7 +48,6 @@ char *ft_topshift(char *map, char *str, char c, int j)
 				return (NULL);
 			i++;
 		}
-		k++;
 	}
 	return (map);
 }
