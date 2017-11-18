@@ -6,7 +6,7 @@
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 08:57:53 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/17 12:27:36 by pcartau          ###   ########.fr       */
+/*   Updated: 2017/11/18 18:16:41 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main(void)
 	int i;
 	int j;
 	int k;
+	int l;
 	char *tetri;
 	char *str;
 	char *maptemp;
@@ -24,27 +25,44 @@ int main(void)
 	char c;
 
 	c = 'A';
-	i = 4;
-	j = 4;
+	l = 0;
+	i = 6;
+	j = 6;
 	k = i;
-	map = ft_emptymap(i, j);
-	str = ft_strdup("....\n....\n..AA\n..AA\n\n....\nBB..\nBB...\n....\n\n");
+	str = ft_strdup("....\nA...\nAA..\nA...\n\nBB..\nBB..\n....\n....\n\n....\n....\n....\n....\n\n");
 
-	maptemp = ft_strdup(map);
-	tetri = ft_detect_trtri(str, c);
+	map = ft_emptymap(i, j);
+	tetri = ft_detect_trtri(map, str, c, j);
+	map = ft_goodplace(map, tetri, c);
 	map = ft_topshift(map, tetri, c, j);
 	map = ft_leftshift(map, tetri, c, j);
 
-	c++;
-
 	maptemp = ft_strdup(map);
-	tetri = ft_detect_trtri(str, c);
-	map = ft_topshift(map, tetri, c, j);
-	if (!ft_checker(map, c, i))
+	c++;
+	tetri = ft_detect_trtri(ft_emptymap(i, j), str, c, j);
+
+	while (l != i + 1)
 	{
-		map = maptemp;
-		map = ft_bottomshift(map, tetri, c, j);
+		if (l == i)
+		{
+			tetri = ft_detect_trtri(ft_emptymap(i, j), str, c, j);
+			tetri = ft_bottomshift(ft_emptymap(i, j), tetri, c, j);
+			l = 0;
+		}
+		while (l < i)
+		{
+			map = ft_goodplace(map, tetri, c);
+			if (!(ft_checker(map, c, j)))
+			{
+				tetri = ft_rightshift(ft_emptymap(i, j), tetri, c);
+				map = ft_strdup(maptemp);
+			}
+			else
+				l = i;
+			l++;
+		}
 	}
-	printf("%s\n", map);
+
+	printf("%s", map);
 	return (0);
 }
