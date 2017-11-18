@@ -6,7 +6,7 @@
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 13:43:52 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/18 16:29:49 by pcartau          ###   ########.fr       */
+/*   Updated: 2017/11/18 16:57:49 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ static int condition_left(char *map, char c, int j)
 {
 	int i;
 
-	i = 1;
-	if (map[0] == c)
+	i = 0;
+	if (map[i] == c)
 		return (0);
-	while (i < j)
+	while (i < j * 3)
 	{
 		if (map[i + j + 1] == c)
 			return (0);
-		i++;
+		i += j + 1;
 	}
 	return (1);
 }
