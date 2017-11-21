@@ -6,7 +6,7 @@
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 13:43:52 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/18 16:57:49 by pcartau          ###   ########.fr       */
+/*   Updated: 2017/11/21 10:08:19 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int condition_left(char *map, char c, int j)
 
 	i = 0;
 	if (map[i] == c)
-		return (0);
+			return (0);
 	while (i < j * 3)
 	{
 		if (map[i + j + 1] == c)
@@ -34,7 +34,9 @@ char *ft_leftshift(char *map, char *str, char c, int j)
 	int k;
 
 	k = 0;
-	while (condition_left(map, c, j))
+	if (!(condition_left(str, c, j)))
+		return (str);
+	while (condition_left(str, c, j))
 	{
 		i = 0;
 		while (map[i])
@@ -44,11 +46,9 @@ char *ft_leftshift(char *map, char *str, char c, int j)
 				str[i - 1] = c;
 				str[i] = '.';
 				map[i - 1] = c;
-				if (map[i] == c)
-					map[i] = '.';
+				map[i] = '.';
 			}
-			else if (str[i] == c && (map[i - 1] > 127 || map[i - 1] \
-						< 0))
+			else if (str[i] == c && (map[i - 1] > 127 || map[i - 1] < 0))
 				return (NULL);
 			i++;
 		}

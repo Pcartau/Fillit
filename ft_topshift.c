@@ -6,7 +6,7 @@
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 13:44:15 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/18 16:20:14 by pcartau          ###   ########.fr       */
+/*   Updated: 2017/11/21 10:23:28 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,14 @@ char	*ft_topshift(char *map, char *str, char c, int j)
 {
 	int i;
 
+	if (!(condition_top(str, c, j)))
+		return (str);
 	while (condition_top(map, c, j))
 	{
 		i = 0;
 		while (map[i])
 		{
-			if (str[i] == c && str[i - (j + 1)] == '.')
+			if (str[i] == c && map[i - (j + 1)] == '.')
 			{
 				str[i - (j + 1)] = c;
 				str[i] = '.';

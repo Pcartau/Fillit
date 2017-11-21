@@ -6,7 +6,7 @@
 /*   By: pcartau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 08:57:53 by pcartau           #+#    #+#             */
-/*   Updated: 2017/11/18 18:16:41 by pcartau          ###   ########.fr       */
+/*   Updated: 2017/11/21 14:00:16 by pcartau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,21 @@ int main(void)
 	int j;
 	int k;
 	int l;
-	char *tetri;
+//	char *tetri;
 	char *str;
-	char *maptemp;
-	char *map;
+//	char *maptemp;
+//	char *map;
 	char c;
 
 	c = 'A';
 	l = 0;
-	i = 6;
-	j = 6;
+	i = 4;
+	j = 4;
 	k = i;
-	str = ft_strdup("....\nA...\nAA..\nA...\n\nBB..\nBB..\n....\n....\n\n....\n....\n....\n....\n\n");
+	str = ft_strdup("....\nA...\nAA..\nA...\n\n..BB\n..BB\n....\n....\n\n....\n....\n....\n....\n\n");
+	ft_classer_tetri(str, c, j);
 
+	/*
 	map = ft_emptymap(i, j);
 	tetri = ft_detect_trtri(map, str, c, j);
 	map = ft_goodplace(map, tetri, c);
@@ -63,6 +65,6 @@ int main(void)
 		}
 	}
 
-	printf("%s", map);
+	printf("%s", map);*/
 	return (0);
 }
