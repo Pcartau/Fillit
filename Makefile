@@ -5,40 +5,59 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vgauther <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/07 14:13:38 by vgauther          #+#    #+#              #
-#    Updated: 2017/11/21 10:34:31 by pcartau          ###   ########.fr        #
+#    Created: 2017/12/04 11:24:28 by vgauther          #+#    #+#              #
+#    Updated: 2017/12/04 11:25:49 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libfil.a
+# COLORS
+RESET=\033[0m
+DARK=\033[132m
+RED=\033[31m
+GREEN=\033[32m
+YELLOW=\033[33m
+BLUE=\033[34m
+MAGENTA=\033[35m
+CYAN=\033[36m
+WHITE=\033[37m
+BOLDBLACK=\033[1m\033[30m
+BOLDRED=\033[1m\033[31m
+BOLDWHITE=\033[1m\033[37m
 
-EXE = fillit
+NAME = fillit
+SRC = src/main.c src/check_valid_file.c src/check_valid_pos.c src/count.c \
+	src/ft_or.c src/min_size.c src/place_tetri.c src/replacetag.c src/solve.c \
+	src/tab.c src/up_left.c
+OBJ = $(SRC:.c=.o)
+CFLAGS = -Wall -Werror -Wextra
+CC = gcc
 
-FLAGS = -Wall -Werror -Wextra
+.PHONY: clean fclean re re-bis
 
-SRC = ft_strdup.c ft_strlen.c ft_detect_trtri.c ft_bottomshift.c \
-	   ft_goodplace.c ft_leftshift.c ft_rightshift.c \
-	  ft_topshift.c ft_emptymap.c ft_checkpoint.c main.c ft_checker.c \
-	  ft_classer_tetri.c ft_return_tetri.c
+all : $(NAME)
 
-all: $(SRC)
-	gcc $(FLAGS) $(SRC)
+$(NAME):
+	@make -C libft/
+	@echo "$(RESET)$(GREEN)Lib done $(WHITE)$(RESET)"
+	@$(CC) $(CFLAGS) $(SRC) -o $(NAME) -I libft/ -L libft/ -lft
+	@echo "$(RESET)$(GREEN)Compiling fillit.. $(WHITE)$(RESET)"
 
-#all: $(NAME)
+clean:
+	@make -C libft/ clean
+	@rm -f $(OBJ)
+	@echo "$(RESET)$(BOLDRED)Removing Object$(WHITE)$(RESET)"
 
-#%.o: %.c
-#	gcc $(FLAGS) -c -o $@ $<
+fclean: clean
+	@make -C libft/ fclean
+	@rm -f $(NAME)
+	@echo "$(RESET)$(BOLDRED)Removing exe$(WHITE)$(RESET)"
 
-#$(NAME): $(OBJ)
-#	ar rc $(NAME) $(OBJ)
-#	ranlib $(NAME)
+re: fclean all
 
-#clean:
-#	/bin/rm -f $(OBJ)
-
-#fclean: clean
-#	/bin/rm -f $(NAME)
-
-#re : fclean all
-
-#.PHONY : clean fclean all re
+re-bis:
+	@rm -f $(OBJ)
+	@echo "$(RESET)$(BOLDRED)Removing Object$(WHITE)$(RESET)"
+	@rm -f $(NAME)
+	@echo "$(RESET)$(BOLDRED)Removing exe$(WHITE)$(RESET)"
+	@$(CC) $(CFLAGS) $(SRC) -o $(NAME) -I libft/ -L libft/ -lft
+	@echo "$(RESET)$(GREEN)Compiling fillit.. $(WHITE)$(RESET)"
